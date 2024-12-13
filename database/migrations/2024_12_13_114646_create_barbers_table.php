@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('barbers', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['hair', 'beard', 'both']);
-            $table->decimal('price', 8, 2);
-            $table->unsignedBigInteger('barber_id');
-            $table->foreign('barber_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('name');
+            $table->string('email')->unique()->nullable();
+            $table->string('phone');
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('barbers');
     }
 };
