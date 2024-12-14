@@ -8,8 +8,9 @@ class Service extends Model
 {
     protected $fillable = ['type', 'price', 'barber_id'];
 
-    public function barber()
+
+    public function serviceRecords()
     {
-        return $this->belongsTo(Barber::class);
+        return $this->hasMany(ServiceRecord::class);
     }
 }

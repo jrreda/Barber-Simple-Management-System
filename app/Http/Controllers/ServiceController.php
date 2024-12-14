@@ -29,14 +29,14 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        // Validate the request data
         $request->validate([
             'type' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'barber_id' => 'required|exists:barbers,id',
         ]);
 
         // Create a new service
-        Service::create($request->only('type', 'price', 'barber_id'));
+        Service::create($request->only('type', 'price'));
 
         return redirect()->route('services.index')->with('success', 'Service added successfully.');
     }
@@ -54,7 +54,8 @@ class ServiceController extends Controller
      */
     public function edit(string $id)
     {
-        return view('services.edit', compact('service'));
+        $service = Service::findOrFail($id);
+        return view('services.create', compact('service'));
     }
 
     /**
@@ -65,9 +66,8 @@ class ServiceController extends Controller
         $request->validate([
             'type' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'barber_id' => 'required|exists:barbers,id',
         ]);
-        $service->update($request->only('type', 'price', 'barber_id'));
+        $service->update($request->only('type', 'price'));
 
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');
     }

@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->enum('type', ['hair', 'beard', 'both']);
             $table->decimal('price', 8, 2);
-            $table->unsignedBigInteger('barber_id');
-            $table->foreign('barber_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

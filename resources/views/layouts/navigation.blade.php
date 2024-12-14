@@ -15,6 +15,16 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    {{-- add barbers, service & services_records routes --}}
+                    <x-nav-link :href="route('barbers.index')" :active="request()->routeIs('barbers.index')">
+                        {{ __('Barbers') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('services.index')" :active="request()->routeIs('services.index')">
+                        {{ __('Services') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('service_records.index')" :active="request()->routeIs('service_records.index')">
+                        {{ __('Services Records') }}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class ServiceRecord extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'service_date',
+        'extra_fees',
+        'notes',
+        'barber_id',
+        'service_id',
+    ];
+
+    // Relationship with Barber
+    public function barber()
+    {
+        return $this->belongsTo(Barber::class);
+    }
+
+    // Relationship with Service
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+}

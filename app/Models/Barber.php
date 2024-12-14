@@ -8,8 +8,8 @@ class Barber extends Model
 {
     protected $fillable = ['name', 'email', 'phone', 'address'];
 
-    public function services()
+    public function serviceRecords()
     {
-        return $this->hasMany(Service::class);
+        return $this->hasMany(ServiceRecord::class);
     }
 }

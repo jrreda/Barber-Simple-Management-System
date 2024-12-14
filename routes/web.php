@@ -3,6 +3,7 @@
 use App\Http\Controllers\BarberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceRecordController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,4 +23,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('barbers', BarberController::class);
-Route::resource('prices', ServiceController::class);
+Route::resource('services', ServiceController::class);
+Route::resource('service_records', ServiceRecordController::class);
