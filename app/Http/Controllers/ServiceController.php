@@ -55,7 +55,7 @@ class ServiceController extends Controller
     public function edit(string $id)
     {
         $service = Service::findOrFail($id);
-        return view('services.create', compact('service'));
+        return view('services.edit', compact('service'));
     }
 
     /**
@@ -67,6 +67,7 @@ class ServiceController extends Controller
             'type' => 'required|string|max:255',
             'price' => 'required|numeric',
         ]);
+        dd($request->all(), $service);
         $service->update($request->only('type', 'price'));
 
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');

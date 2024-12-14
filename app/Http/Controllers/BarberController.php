@@ -30,9 +30,9 @@ class BarberController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:barbers,email',
-            'phone' => 'required|string|max:20',
+            'name'    => 'required|string|max:255',
+            'email'   => 'nullable|email|unique:barbers,email',
+            'phone'   => 'required|string|max:20',
             'address' => 'nullable|string|max:255',
         ]);
 
@@ -65,12 +65,12 @@ class BarberController extends Controller
     public function update(Request $request, Barber $barber)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:barbers,email,' . $barber->id,
-            'phone' => 'required|string|max:20',
+            'name'    => 'required|string|max:255',
+            'email'   => 'nullable|email|unique:barbers,email,' . $barber->id,
+            'phone'   => 'required|string|max:20|unique:barbers,phone',
             'address' => 'nullable|string|max:255',
         ]);
-        $barber->update($request->only('name'));
+        $barber->update($request->only('name', 'email', 'phone', 'address'));
 
         return redirect()->route('barbers.index')->with('success', 'Barber updated successfully.');
     }

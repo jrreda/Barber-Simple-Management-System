@@ -9,13 +9,20 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
-                <a href="{{ route('service_records.create') }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ __('Add Service Record') }}</a>
+                <a href="{{ route('service_records.create') }}">
+                    <x-primary-button>
+                        {{ __('Add a new Service') }}
+                    </x-primary-button>
+                </a>
 
                 <table class="table-auto">
                     <thead>
                         <tr>
                             <th class="px-4 py-2">Barber</th>
                             <th class="px-4 py-2">Service Type</th>
+                            <th class="px-4 py-2">Price</th>
+                            <th class="px-4 py-2">Extra Fees</th>
+                            <th class="px-4 py-2">Notes</th>
                             <th class="px-4 py-2">Date</th>
                             <th class="px-4 py-2">Actions</th>
                         </tr>
@@ -25,13 +32,23 @@
                             <tr>
                                 <td class="border px-4 py-2">{{ $record->barber->name }}</td>
                                 <td class="border px-4 py-2">{{ ucfirst($record->service->type) }}</td>
+                                <td class="border px-4 py-2">{{ $record->service->price }}</td>
+                                <td class="border px-4 py-2">{{ $record->extra_fees }}</td>
+                                <td class="border px-4 py-2">{{ $record->notes }}</td>
                                 <td class="border px-4 py-2">{{ $record->service_date }}</td>
-                                <td class="border px-4 py-2">
-                                    <a href="{{ route('service_records.edit', $record) }}" class="text-blue-500 hover:text-blue-700">Edit</a>
-                                    <form method="POST" action="{{ route('service_records.destroy', $record) }}" style="display:inline;">
+                                <td class="border px-4 py-2 flex gap-2">
+                                    <a href="{{ route('service_records.edit', $record->id) }}">
+                                        <x-secondary-button>
+                                            {{ __('Edit') }}
+                                        </x-secondary-button>
+                                    </a>
+
+                                    <form method="POST" action="{{ route('service_records.destroy', $record) }}" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
+                                        <x-danger-button type="submit" onclick="return confirm('Are you sure you want to delete this service?')">
+                                            {{ __('Delete') }}
+                                        </x-danger-button>
                                     </form>
                                 </td>
                             </tr>

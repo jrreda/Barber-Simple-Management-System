@@ -31,6 +31,9 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <!-- Messages -->
+            <x-flash></x-flash>
         </div>
     </body>
 </html>

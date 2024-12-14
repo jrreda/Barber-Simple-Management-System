@@ -63,18 +63,18 @@ class ServiceRecordController extends Controller
     public function edit(string $id)
     {
         // Show form to edit a service record
-        $serviceRecord = ServiceRecord::findOrFail($id);
+        $record = ServiceRecord::findOrFail($id);
 
         $barbers = Barber::all();
         $services = Service::all();
 
-        return view('service_records.edit', compact('serviceRecord', 'barbers', 'services'));
+        return view('service_records.edit', compact('record', 'barbers', 'services'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ServiceRecord $serviceRecord)
+    public function update(Request $request, string $id)
     {
         // Validate and update a service record
         $request->validate([
@@ -85,7 +85,14 @@ class ServiceRecordController extends Controller
             'service_id'   => 'required|exists:services,id',
         ]);
 
-        $serviceRecord->update($request->all());
+        $record = ServiceRecord::findOrFail($id);
+        $record->update($request->only(
+            'service_date',
+            'extra_fees',
+            'notes',
+            'barber_id',
+            'service_id',
+        ));
 
         return redirect()->route('service_records.index')->with('success', 'Service record updated successfully.');
     }

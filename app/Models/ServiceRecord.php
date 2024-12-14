@@ -9,6 +9,8 @@ class ServiceRecord extends Model
 {
     use HasFactory;
 
+    protected $table = 'service_records';
+
     protected $fillable = [
         'service_date',
         'extra_fees',
