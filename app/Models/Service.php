@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    //
+    protected $fillable = ['type', 'price', 'barber_id'];
+
+    public function barber()
+    {
+        return $this->belongsTo(Barber::class);
+    }
 }
