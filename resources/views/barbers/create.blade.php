@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add a New Barber') }}
+            {{ __('messages.create_barber') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     @csrf
 
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">{{ __('Name') }}:</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">{{ __('messages.name') }}</label>
                         <input
                             type="text"
                             name="name"
@@ -25,7 +25,7 @@
                     </div>
 
                     <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number:</label>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">{{ __('messages.phone') }}</label>
                         <input
                             type="number"
                             name="phone"
@@ -38,7 +38,7 @@
                     </div>
 
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700">{{ __('Email') }}:</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700">{{ __('messages.email') }}</label>
                         <input
                             type="email"
                             name="email"
@@ -50,7 +50,7 @@
                     </div>
 
                     <div>
-                        <label for="address" class="block text-sm font-medium text-gray-700">{{ __('Address') }}:</label>
+                        <label for="address" class="block text-sm font-medium text-gray-700">{{ __('messages.address') }}</label>
                         <input
                             type="text"
                             name="address"
@@ -62,12 +62,12 @@
                     </div>
 
                     <x-primary-button>
-                        {{ __('Save') }}
+                        {{ __('messages.save') }}
                     </x-primary-button>
 
                     <a href="{{ route('barbers.index') }}">
                         <x-secondary-button>
-                            {{ __('Cancel') }}
+                            {{ __('messages.cancel') }}
                         </x-secondary-button>
                     </a>
                 </form>

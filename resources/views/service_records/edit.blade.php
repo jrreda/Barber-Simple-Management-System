@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit service record') }}
+            {{ __('messages.edit_record') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                     @method('PUT')
 
                     <div>
-                        <label for="barber_id" class="block text-sm font-medium text-gray-700">{{ __('Barber') }}:</label>
+                        <label for="barber_id" class="block text-sm font-medium text-gray-700">{{ __('messages.service_type') }}:</label>
                         <select
                             name="barber_id"
                             id="barber_id"
@@ -29,7 +29,7 @@
                     </div>
 
                     <div>
-                        <label for="service_id" class="block text-sm font-medium text-gray-700">Service Type:</label>
+                        <label for="service_id" class="block text-sm font-medium text-gray-700">{{ __('messages.service_type') }}</label>
                         <select
                             name="service_id"
                             id="service_id"
@@ -45,7 +45,7 @@
                     </div>
 
                     <div>
-                        <label for="extra_fees" class="block text-sm font-medium text-gray-700">Extra Fees:</label>
+                        <label for="extra_fees" class="block text-sm font-medium text-gray-700">{{ __('messages.extra_fees') }}</label>
                         <input
                             type="number"
                             name="extra_fees"
@@ -58,7 +58,7 @@
                     </div>
 
                     <div>
-                        <label for="notes" class="block text-sm font-medium text-gray-700">Notes:</label>
+                        <label for="notes" class="block text-sm font-medium text-gray-700">{{ __('messages.notes') }}</label>
                         <textarea
                             name="notes"
                             id="notes"
@@ -68,7 +68,7 @@
                     </div>
 
                     <div>
-                        <label for="service_date" class="block text-sm font-medium text-gray-700">Date:</label>
+                        <label for="service_date" class="block text-sm font-medium text-gray-700">{{ __('messages.date') }}</label>
                         <input
                             type="date"
                             name="service_date"
@@ -80,12 +80,12 @@
                     </div>
 
                     <x-primary-button>
-                        {{ __('Update') }}
+                        {{ __('messages.update') }}
                     </x-primary-button>
 
                     <a href="{{ route('service_records.index') }}">
                         <x-secondary-button>
-                            {{ __('Cancel') }}
+                            {{ __('messages.cancel') }}
                         </x-secondary-button>
                     </a>
                 </form>

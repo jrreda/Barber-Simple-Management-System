@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add a New Service') }}
+            {{ __('messages.add_service') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     @csrf
 
                     <div class="w-48">
-                        <label for="type" class="block text-sm font-medium text-gray-700">{{ __('Type') }}</label>
+                        <label for="type" class="block text-sm font-medium text-gray-700">{{ __('messages.type') }}</label>
                         <select
                             name="type"
                             id="type"
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="w-48">
-                        <label for="price" class="block text-sm font-medium text-gray-700">{{ __('Price') }}</label>
+                        <label for="price" class="block text-sm font-medium text-gray-700">{{ __('messages.price') }}</label>
                         <input
                             type="number"
                             name="price"
@@ -40,12 +40,12 @@
                     </div>
 
                     <x-primary-button>
-                        {{ __('Save') }}
+                        {{ __('messages.save') }}
                     </x-primary-button>
 
                     <a href="{{ route('services.index') }}">
                         <x-secondary-button>
-                            {{ __('Cancel') }}
+                            {{ __('messages.cancel') }}
                         </x-secondary-button>
                     </a>
                 </form>

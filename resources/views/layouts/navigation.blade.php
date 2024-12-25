@@ -13,22 +13,41 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('messages.dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('barbers.index')" :active="str_contains(request()->route()->getName(), 'barbers')">
-                        {{ __('Barbers') }}
+                        {{ __('messages.barbers') }}
                     </x-nav-link>
                     <x-nav-link :href="route('services.index')" :active="str_contains(request()->route()->getName(), 'services')">
-                        {{ __('Services') }}
+                        {{ __('messages.services') }}
                     </x-nav-link>
                     <x-nav-link :href="route('service_records.index')" :active="str_contains(request()->route()->getName(), 'service_records')">
-                        {{ __('Services Records') }}
+                        {{ __('messages.service_records') }}
                     </x-nav-link>
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
+                                {{ strtoupper(app()->getLocale()) }}
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link href="{{ url('locale/en') }}">
+                                English
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ url('locale/ar') }}">
+                                العربية
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
