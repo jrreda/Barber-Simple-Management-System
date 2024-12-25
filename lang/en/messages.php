@@ -28,7 +28,7 @@ return [
     'extra_fees'      => 'Extra Fees',
     'service_type'    => 'Service Type',
     'notes'           => 'Notes',
-    'darte'           => 'Date',
+    'date'            => 'Date',
     'price'           => 'Price',
     'actions'         => 'Actions',
     'record_delete_confirm'  => 'Are you sure you want to delete this service?',
