@@ -72,4 +72,18 @@ return [
     'proportion'     => 'Proportion',
     'bonus'          => 'Bonus',
 
+    // Logs
+    'logs'         => 'Activity Logs',
+    'user'         => 'User',
+    'action'       => 'Action',
+    'details'      => 'Details',
+    'view_changes' => 'View Changes',
+    'model_type'   => 'Model Type',
+    'model_id'     => 'Model ID',
+    'properties'   => 'Properties',
+    'created_at'   => 'Created At',
+    'updated_at'   => 'Updated At',
+    'old_values'   => 'Old Values',
+    'new_values'   => 'New Values',
+
 ];

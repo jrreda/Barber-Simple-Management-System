@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\BarberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -37,6 +38,7 @@ Route::middleware(['auth', OwnerOnly::class])->group(function () {
     Route::resource('barbers', BarberController::class);
     Route::resource('services', ServiceController::class);
     Route::get('/revenue', [BarberController::class, 'revenue'])->name('revenue');
+    Route::get('/activity-logs', [ActivityLogController::class, 'index'])->name('logs.index');
 });
 
 Route::middleware(['auth'])->group(function () {

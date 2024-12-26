@@ -28,6 +28,9 @@
                         <x-nav-link :href="route('revenue')" :active="str_contains(request()->route()->getName(), 'revenue')">
                             {{ __('messages.revenue') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('logs.index')" :active="str_contains(request()->route()->getName(), 'logs')">
+                            {{ __('messages.logs') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barber;
 use App\Models\Service;
 use App\Models\ServiceRecord;
+use App\Services\ActivityLogger;
 use Illuminate\Http\Request;
 
 class ServiceRecordController extends Controller
@@ -46,13 +47,22 @@ class ServiceRecordController extends Controller
             'service_id'   => 'required|exists:services,id',
         ]);
 
-        ServiceRecord::create($request->only([
+        $record = ServiceRecord::create($request->only([
             'service_date',
             'extra_fees',
             'notes',
             'barber_id',
             'service_id',
         ]));
+
+        // log the activity
+        ActivityLogger::log(
+            'create',
+            'ServiceRecord',
+            $record->id,
+            null,
+            $record->toArray()
+        );
 
         return redirect()->route('service_records.index')->with('success', 'Service record created successfully.');
     }
@@ -86,6 +96,8 @@ class ServiceRecordController extends Controller
         ]);
 
         $record = ServiceRecord::findOrFail($id);
+        $oldValues = $record->toArray();
+
         $record->update($request->only(
             'service_date',
             'extra_fees',
@@ -93,6 +105,15 @@ class ServiceRecordController extends Controller
             'barber_id',
             'service_id',
         ));
+
+        // log the activity
+        ActivityLogger::log(
+            'update',
+            'ServiceRecord',
+            $record->id,
+            $oldValues,
+            $record->fresh()->toArray()
+        );
 
         return redirect()->route('service_records.index')->with('success', 'Service record updated successfully.');
     }
@@ -105,6 +126,15 @@ class ServiceRecordController extends Controller
         // Delete a service record
         $record = ServiceRecord::findOrFail($id);
         $record->delete();
+
+        // log the activity
+        ActivityLogger::log(
+            'delete',
+            'ServiceRecord',
+            $record->id,
+            null,
+            $record->toArray()
+        );
 
         return redirect()->route('service_records.index')->with('success', 'Service record deleted successfully.');
     }
