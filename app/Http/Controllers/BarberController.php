@@ -84,4 +84,39 @@ class BarberController extends Controller
 
         return redirect()->route('barbers.index')->with('success', 'Barber deleted successfully.');
     }
+
+    /**
+     * Calulate the total revenue of a barber.
+     */
+    public function revenue(Request $request)
+    {
+        $startDate  = $request->get('start_date', now()->startOfMonth());
+        $endDate    = $request->get('end_date', now()->endOfMonth());
+        $proportion = $request->get('proportion', 5);                      // Default proportion is 5%
+
+        $barberIncomes = Barber::with(['serviceRecords' => function($query) use ($startDate, $endDate) {
+            $query->whereBetween('service_date', [$startDate, $endDate]);
+        }, 'serviceRecords.service'])
+        ->get()
+        ->map(function($barber) use ($proportion) {
+            $totalIncome = $barber->serviceRecords->sum(function($record) {
+                return $record->service->price + ($record->extra_fees ?? 0);
+            });
+
+            return [
+                'name'         => $barber->name,
+                'total_income' => $barber->serviceRecords->sum(function($record) {
+                    return $record->service->price + ($record->extra_fees ?? 0);
+                }),
+                'services_count' => $barber->serviceRecords->count(),
+                'bonus'          => ($totalIncome * $proportion) / 100,
+                'records'        => $barber->serviceRecords
+            ];
+        });
+
+        $totalIncome = $barberIncomes->sum('total_income');
+        $totalBonus = $barberIncomes->sum('bonus');
+
+        return view('revenue.index', compact('totalIncome', 'barberIncomes', 'totalBonus', 'startDate', 'endDate', 'proportion'));
+    }
 }

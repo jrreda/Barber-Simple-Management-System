@@ -36,6 +36,7 @@ Route::get('locale/{locale}', function($locale) {
 Route::middleware(['auth', OwnerOnly::class])->group(function () {
     Route::resource('barbers', BarberController::class);
     Route::resource('services', ServiceController::class);
+    Route::get('/revenue', [BarberController::class, 'revenue'])->name('revenue');
 });
 
 Route::middleware(['auth'])->group(function () {

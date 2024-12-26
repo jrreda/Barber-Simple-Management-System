@@ -11,7 +11,16 @@ return [
     'delete'  => 'Delete',
     'save'    => 'Save',
     'cancel'  => 'Cancel',
-    'update'  => 'Update',
+    'update' => 'Update',
+    'create' => 'Create',
+    'search' => 'Search',
+    'reset'  => 'Reset',
+    'back'   => 'Back',
+    'close'  => 'Close',
+    'view'   => 'View',
+    'add'    => 'Add',
+    'filter' => 'Filter',
+    'pound'  => 'Pound',
 
     // Navbar
     'dashboard' => 'Dashboard',
@@ -51,5 +60,16 @@ return [
     'address'        => 'Address',
     // 'photo'          => 'Photo',
     'barber_delete_confirm' => 'Are you sure you want to delete this barber?',
+
+    // Revenue
+    'revenue'        => 'Revenue',
+    'start_date'     => 'Start Date',
+    'end_date'       => 'End Date',
+    'total_income'   => 'Total Income',
+    'services_count' => 'Services Count',
+    'barber_revenue' => 'Barber Revenue',
+    'total_revenue'  => 'Total Revenue',
+    'proportion'     => 'Proportion',
+    'bonus'          => 'Bonus',
 
 ];

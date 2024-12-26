@@ -15,15 +15,20 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('messages.dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('barbers.index')" :active="str_contains(request()->route()->getName(), 'barbers')">
-                        {{ __('messages.barbers') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('services.index')" :active="str_contains(request()->route()->getName(), 'services')">
-                        {{ __('messages.services') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('service_records.index')" :active="str_contains(request()->route()->getName(), 'service_records')">
                         {{ __('messages.service_records') }}
                     </x-nav-link>
+                    @if (Auth::user()->role == 'owner')
+                        <x-nav-link :href="route('barbers.index')" :active="str_contains(request()->route()->getName(), 'barbers')">
+                            {{ __('messages.barbers') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('services.index')" :active="str_contains(request()->route()->getName(), 'services')">
+                            {{ __('messages.services') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('revenue')" :active="str_contains(request()->route()->getName(), 'revenue')">
+                            {{ __('messages.revenue') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

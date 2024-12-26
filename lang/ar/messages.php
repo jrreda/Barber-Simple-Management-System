@@ -12,6 +12,12 @@ return [
     'save'    => 'حفظ',
     'cancel'  => 'إلغاء',
     'update'  => 'تحديث',
+    'create'  => 'إنشاء',
+    'view'    => 'عرض',
+    'back'    => 'رجوع',
+    'search'  => 'بحث',
+    'filter'  => 'تصفية',
+    'pound'   => 'جنيه',
 
     // Navbar
     'dashboard' => 'لوحة التحكم',
@@ -51,5 +57,13 @@ return [
     'address'        => 'العنوان',
     // 'photo'          => 'Photo',
     'barber_delete_confirm' => 'هل أنت متأكد أنك تريد حذف هذا الحلاق؟',
+
+    // Revenue
+    'revenue'        => 'الإيرادات',
+    'start_date'     => 'تاريخ البدء',
+    'end_date'       => 'تاريخ الانتهاء',
+    'total_income'   => 'إجمالي الإيرادات',
+    'proportion'     => 'النسبة المئوية',
+    'bonus'          => 'المكافأة',
 
 ];
