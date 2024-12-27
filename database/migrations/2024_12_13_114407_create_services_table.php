@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['hair', 'beard', 'both']);
+            $table->string('type');  // Changed from enum to string
             $table->decimal('price', 8, 2);
             $table->timestamps();
         });

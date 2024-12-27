@@ -14,16 +14,14 @@
 
                     <div class="w-48">
                         <label for="type" class="block text-sm font-medium text-gray-700">{{ __('messages.type') }}</label>
-                        <select
+                        <input
+                            type="text"
                             name="type"
                             id="type"
+                            value="{{ $service->type ?? '' }}"
                             required
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                            >
-                            <option value="hair" {{ $service->type === 'hair' ? 'selected' : '' }}>Hair</option>
-                            <option value="beard" {{ $service->type === 'beard' ? 'selected' : '' }}>Beard</option>
-                            <option value="both" {{ $service->type === 'both' ? 'selected' : '' }}>Both</option>
-                        </select>
+                        >
                     </div>
 
                     <div class="w-48">

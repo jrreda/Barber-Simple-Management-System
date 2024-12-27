@@ -67,7 +67,7 @@ class ServiceController extends Controller
             'type' => 'required|string|max:255',
             'price' => 'required|numeric',
         ]);
-        dd($request->all(), $service);
+
         $service->update($request->only('type', 'price'));
 
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');

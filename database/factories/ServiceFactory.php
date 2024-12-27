@@ -17,7 +17,7 @@ class ServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'type'  => $this->faker->randomElement(['hair', 'beard', 'both']),
+            'type'  => $this->faker->randomElement(['hair', 'beard', 'both', 'shave', 'trim', 'color']),
             'price' => $this->faker->randomFloat(2, 10, 100),
         ];
     }
