@@ -214,8 +214,8 @@ resources/
 ## Localization
 
 ### Supported Languages
-- English (en) - Default
-- Arabic (ar) - With RTL layout support
+- Arabic (ar) - Default With RTL layout support
+- English (en) - With LTR layout support
 
 ### Switch Language
 Click the language dropdown in the navigation bar to toggle between English and Arabic. Selection is stored in session.

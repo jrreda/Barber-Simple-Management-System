@@ -70,10 +70,10 @@
                     <div>
                         <label for="service_date" class="block text-sm font-medium text-gray-700">{{ __('messages.date') }}</label>
                         <input
-                            type="date"
+                            type="datetime-local"
                             name="service_date"
                             id="service_date"
-                            value="{{ old('service_date') ?? date('Y-m-d') }}"
+                            value="{{ old('service_date') ?? $record->service_date->format('Y-m-d\TH:i') }}"
                             required
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         >

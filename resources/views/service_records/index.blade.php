@@ -35,7 +35,7 @@
                                 <td class="border px-4 py-2">{{ $record->service->price }}</td>
                                 <td class="border px-4 py-2">{{ $record->extra_fees }}</td>
                                 <td class="border px-4 py-2">{{ $record->notes }}</td>
-                                <td class="border px-4 py-2">{{ $record->service_date }}</td>
+                                <td class="border px-4 py-2">{{ $record->service_date->format('Y-m-d H:i') }}</td>
                                 <td class="border px-4 py-2 flex gap-2">
                                     <a href="{{ route('service_records.edit', $record->id) }}">
                                         <x-secondary-button>

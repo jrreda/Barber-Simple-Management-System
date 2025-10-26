@@ -19,6 +19,10 @@ class ServiceRecord extends Model
         'service_id',
     ];
 
+    protected $casts = [
+        'service_date' => 'datetime',
+    ];
+
     // Relationship with Barber
     public function barber()
     {
