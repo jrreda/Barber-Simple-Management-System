@@ -45,6 +45,14 @@ return [
     'create_service'  => 'إنشاء خدمة',
     'edit_service'    => 'تعديل الخدمة',
     'service_delete_confirm' => 'هل أنت متأكد أنك تريد حذف هذه الخدمة؟',
+    'discount'        => 'الخصم',
+    'discount_type'   => 'نوع الخصم',
+    'discount_value'  => 'قيمة الخصم',
+    'no_discount'     => 'بدون خصم',
+    'fixed_le'        => 'ثابت (جنيه)',
+    'percentage'      => 'نسبة مئوية (%)',
+    'final_price'     => 'السعر النهائي',
+    'services_count'  => 'عدد الخدمات',
 
     // Barber
     'barbers'        => 'الحلاقين',

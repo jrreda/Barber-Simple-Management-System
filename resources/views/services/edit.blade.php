@@ -30,12 +30,51 @@
                             type="number"
                             name="price"
                             id="price"
-                            value="{{ $service->price ?? '' }}"
+                            value="{{ old('price', $service->price ?? '') }}"
                             placeholder="Service Fees"
-                            step=""
+                            step="0.01"
+                            min="0"
                             required
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         >
+                        @error('price')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Discount Type -->
+                    <div class="w-48">
+                        <label for="discount_type" class="block text-sm font-medium text-gray-700">{{ __('messages.discount_type') }}</label>
+                        <select
+                            name="discount_type"
+                            id="discount_type"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        >
+                            <option value="">{{ __('messages.no_discount') }}</option>
+                            <option value="fixed" {{ old('discount_type', $service->discount_type) == 'fixed' ? 'selected' : '' }}>{{ __('messages.fixed_le') }}</option>
+                            <option value="percentage" {{ old('discount_type', $service->discount_type) == 'percentage' ? 'selected' : '' }}>{{ __('messages.percentage') }}</option>
+                        </select>
+                        @error('discount_type')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Discount Value -->
+                    <div class="w-48">
+                        <label for="discount_value" class="block text-sm font-medium text-gray-700">{{ __('messages.discount_value') }}</label>
+                        <input
+                            type="number"
+                            name="discount_value"
+                            id="discount_value"
+                            value="{{ old('discount_value', $service->discount_value) }}"
+                            placeholder="0"
+                            step="0.01"
+                            min="0"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        >
+                        @error('discount_value')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <x-primary-button>

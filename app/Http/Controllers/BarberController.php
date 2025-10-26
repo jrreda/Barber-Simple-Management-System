@@ -100,13 +100,13 @@ class BarberController extends Controller
         ->get()
         ->map(function($barber) use ($proportion) {
             $totalIncome = $barber->serviceRecords->sum(function($record) {
-                return $record->service->price + ($record->extra_fees ?? 0);
+                return $record->service->final_price + ($record->extra_fees ?? 0);
             });
 
             return [
                 'name'         => $barber->name,
                 'total_income' => $barber->serviceRecords->sum(function($record) {
-                    return $record->service->price + ($record->extra_fees ?? 0);
+                    return $record->service->final_price + ($record->extra_fees ?? 0);
                 }),
                 'services_count' => $barber->serviceRecords->count(),
                 'bonus'          => ($totalIncome * $proportion) / 100,

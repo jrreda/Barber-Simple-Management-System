@@ -20,6 +20,8 @@
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('messages.type') }}</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('messages.price') }}</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('messages.discount') }}</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('messages.final_price') }}</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ __('messages.actions') }}</th>
                             </tr>
                         </thead>
@@ -27,7 +29,19 @@
                             @foreach ($services as $service)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ ucfirst($service->type) }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $service->price }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ number_format($service->price, 2) }} {{ __('messages.pound') }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @if($service->discount_type)
+                                            @if($service->discount_type === 'fixed')
+                                                <span class="text-green-600">{{ number_format($service->discount_value, 2) }} {{ __('messages.pound') }}</span>
+                                            @else
+                                                <span class="text-green-600">{{ $service->discount_value }}%</span>
+                                            @endif
+                                        @else
+                                            <span class="text-gray-400">-</span>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap font-semibold">{{ number_format($service->final_price, 2) }} {{ __('messages.pound') }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap flex gap-2">
                                         <a href="{{ route('services.edit', $service) }}">
                                             <x-secondary-button>

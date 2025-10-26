@@ -30,13 +30,24 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         // Validate the request data
-        $request->validate([
+        $validated = $request->validate([
             'type' => 'required|string|max:255',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
+            'discount_type' => 'nullable|in:fixed,percentage',
+            'discount_value' => 'nullable|numeric|min:0',
         ]);
 
+        // Additional validation for discount
+        if ($request->discount_type === 'percentage' && $request->discount_value > 100) {
+            return back()->withErrors(['discount_value' => 'Percentage discount cannot exceed 100%'])->withInput();
+        }
+
+        if ($request->discount_type === 'fixed' && $request->discount_value > $request->price) {
+            return back()->withErrors(['discount_value' => 'Fixed discount cannot exceed the price'])->withInput();
+        }
+
         // Create a new service
-        Service::create($request->only('type', 'price'));
+        Service::create($validated);
 
         return redirect()->route('services.index')->with('success', 'Service added successfully.');
     }
@@ -63,12 +74,23 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        $request->validate([
+        $validated = $request->validate([
             'type' => 'required|string|max:255',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
+            'discount_type' => 'nullable|in:fixed,percentage',
+            'discount_value' => 'nullable|numeric|min:0',
         ]);
 
-        $service->update($request->only('type', 'price'));
+        // Additional validation for discount
+        if ($request->discount_type === 'percentage' && $request->discount_value > 100) {
+            return back()->withErrors(['discount_value' => 'Percentage discount cannot exceed 100%'])->withInput();
+        }
+
+        if ($request->discount_type === 'fixed' && $request->discount_value > $request->price) {
+            return back()->withErrors(['discount_value' => 'Fixed discount cannot exceed the price'])->withInput();
+        }
+
+        $service->update($validated);
 
         return redirect()->route('services.index')->with('success', 'Service updated successfully.');
     }

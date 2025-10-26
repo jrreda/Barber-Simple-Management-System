@@ -48,6 +48,13 @@ return [
     'create_service' => 'Create Service',
     'edit_service'   => 'Edit Service',
     'service_delete_confirm' => 'Are you sure you want to delete this service?',
+    'discount'       => 'Discount',
+    'discount_type'  => 'Discount Type',
+    'discount_value' => 'Discount Value',
+    'no_discount'    => 'No Discount',
+    'fixed_le'       => 'Fixed (LE)',
+    'percentage'     => 'Percentage (%)',
+    'final_price'    => 'Final Price',
 
     // Barber
     'barbers'        => 'Barbers',
